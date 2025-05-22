@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
   try {
     const token = await getAccessToken();
 
-    const result = await axios.get("https://atlas.mappls.com/api/places/geocode", {
+    const result = await axios.get("https://atlas.mappls.com/api/search", {
       params: { address: query },
       headers: { Authorization: `Bearer ${token}` },
     });
