@@ -1,7 +1,2 @@
-{
-  "name": "geoapify-wrapper-api",
-  "version": "1.0.0",
-  "dependencies": {
-    "axios": "^1.6.8"
-  }
-}
+{ "name": "mapmyindia-india-search-api", "version": "1.0.0", "dependencies": { "axios": "^1.6.8" } }
+
