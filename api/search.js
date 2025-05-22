@@ -1,61 +1,35 @@
 const axios = require("axios");
 
-let accessToken = null;
-let tokenExpiry = 0;
-
-// Automatically fetches a fresh access token from MapMyIndia
-async function getAccessToken() {
-  if (accessToken && Date.now() < tokenExpiry) {
-    return accessToken;
-  }
-
-  const client_id = "96dHZVzsAut86aiXNcbVhoqGQWqfTTrIWqqqlSW_ounY5wwhh21YLVmMohvZ34INGY2wKWCAGHPsX8pxf4gPXA==";
-  const client_secret = "lrFxI-iSEg8OW0NGn1P_dnudgaDeETgE-5sdJ7c_8RZJvE4WJ0AXNObDS_7EDxNrXnPaLBygEk-5rOmUCuhcy_ijrIA3yz1S";
-
-  const response = await axios.post(
-    "https://outpost.mappls.com/api/security/oauth/token",
-    new URLSearchParams({
-      grant_type: "client_credentials",
-      client_id,
-      client_secret,
-    }),
-    {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    }
-  );
-
-  accessToken = response.data.access_token;
-  tokenExpiry = Date.now() + 3600 * 1000; // 1 hour expiry
-  return accessToken;
-}
-
 module.exports = async (req, res) => {
   const query = req.query.q;
+
   if (!query) {
-    return res.status(400).json({ error: "Missing ?q=..." });
+    return res.status(400).json({ error: "Missing query (?q=...)" });
   }
 
   try {
-    const token = await getAccessToken();
+    const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
+      query
+    )}&lang=en&limit=10&apiKey=54e53471365d4fcebd6ee9aceb7259a9`;
 
-    const result = await axios.get("https://atlas.mappls.com/api/search", {
-      params: { address: query },
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.get(url);
+    const data = response.data;
 
-    if (result.data.copResults && result.data.copResults.length > 0) {
-      const place = result.data.copResults[0];
-      return res.json({
-        address: place.placeName,
-        lat: parseFloat(place.lat),
-        lon: parseFloat(place.lng),
-        eloc: place.eLoc,
-      });
+    if (data.features && data.features.length > 0) {
+      const results = data.features.map((item) => ({
+        address: item.properties.formatted,
+        lat: item.properties.lat,
+        lon: item.properties.lon,
+      }));
+
+      res.status(200).json({ count: results.length, results });
     } else {
-      return res.json({ message: "No matching place found" });
+      res.status(200).json({ count: 0, results: [], message: "No places found" });
     }
   } catch (err) {
-    console.error(err.message);
-    return res.status(500).json({ error: "API Error", message: err.message });
+    res.status(500).json({
+      error: "Geoapify API failed",
+      message: err.response?.data?.message || err.message,
+    });
   }
 };
