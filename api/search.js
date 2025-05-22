@@ -16,12 +16,14 @@ module.exports = async (req, res) => {
     const data = response.data;
 
     if (data.features && data.features.length > 0) {
-      const results = data.features.map((item) => ({
-        address: item.properties.formatted,
-        lat: item.properties.lat,
-        lon: item.properties.lon,
-        city: item.properties.city || null, // include city if available
-      }));
+      const results = data.features
+        .filter(item => item.properties.country === "India") // Filter for India only
+        .map(item => ({
+          address: item.properties.formatted,
+          lat: item.properties.lat,
+          lon: item.properties.lon,
+          city: item.properties.city || null,
+        }));
 
       res.status(200).json({ count: results.length, results });
     } else {
