@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
         address: item.properties.formatted,
         lat: item.properties.lat,
         lon: item.properties.lon,
+        city: item.properties.city || null, // include city if available
       }));
 
       res.status(200).json({ count: results.length, results });
