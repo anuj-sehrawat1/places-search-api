@@ -1,38 +1,30 @@
-const axios = require("axios");
+import fetch from 'node-fetch';
 
-module.exports = async (req, res) => {
-  const query = req.query.q;
-
-  if (!query) {
-    return res.status(400).json({ error: "Missing query (?q=...)" });
-  }
-
+export default async function handler(req, res) {
   try {
-    const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
-      query
-    )}&lang=en&limit=10&apiKey=54e53471365d4fcebd6ee9aceb7259a9`;
+    const userQuery = req.query.q;
 
-    const response = await axios.get(url);
-    const data = response.data;
-
-    if (data.features && data.features.length > 0) {
-      const results = data.features
-        .filter(item => item.properties.country === "India") // Filter for India only
-        .map(item => ({
-          address: item.properties.formatted,
-          lat: item.properties.lat,
-          lon: item.properties.lon,
-          city: item.properties.city || null,
-        }));
-
-      res.status(200).json({ count: results.length, results });
-    } else {
-      res.status(200).json({ count: 0, results: [], message: "No places found" });
+    if (!userQuery) {
+      return res.status(400).json({ error: 'Missing "q" parameter in URL' });
     }
-  } catch (err) {
-    res.status(500).json({
-      error: "Geoapify API failed",
-      message: err.response?.data?.message || err.message,
+
+    const encodedQuery = encodeURIComponent(userQuery);
+
+    const googleUrl = `https://www.google.com/s?gl=in&gs_ri=maps&suggest=p&tbm=map&q=${encodedQuery}&pb=!2i15!4m8!1m3!1d1702.7860451264771!2d76.82201819999999!3d30.651211700000044!3m2!1i360!2i381!4f13.1!10b1!22m5!7e140!9sqvtDaKjFMZ-d4-EP2-HV8AI%3A78453932291!17sqvtDaKjFMZ-d4-EP2-HV8AI%3A78453932292!24m1!2e1!23m2!1e108!10b1`;
+
+    const googleResp = await fetch(googleUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': '*/*'
+      }
     });
+
+    const result = await googleResp.text(); // or .json() if it's JSON
+
+    res.status(200).send(result);
+
+  } catch (err) {
+    console.error('Error:', err.message);
+    res.status(500).json({ error: 'Failed to fetch data from Google' });
   }
-};
+}
