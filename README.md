@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Places Search API – Research & Educational</title>
-</head>
-<body>
 
 <h1>🌍 Places Search API</h1>
 <p>
