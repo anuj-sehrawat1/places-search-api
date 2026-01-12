@@ -139,6 +139,130 @@ API will be available at:<br />
 
 <hr />
 
+<h2>🧠 Why This API Is Different</h2>
+
+<ul>
+  <li>
+    <b>🔍 Specific Place Search (Not Just Cities)</b><br />
+    Unlike many public place APIs that only return cities or regions, this API can
+    resolve <b>very specific locations</b> such as:
+    <ul>
+      <li>Banks</li>
+      <li>Hospitals</li>
+      <li>Malls</li>
+      <li>Institutions</li>
+      <li>Landmarks</li>
+      <li>Local areas & neighborhoods</li>
+    </ul>
+    This makes it useful for understanding how fine-grained place discovery works.
+  </li>
+
+  <br />
+
+  <li>
+    <b>📍 Exact Latitude & Longitude Included</b><br />
+    Most autocomplete or search APIs only return place names or IDs.
+    This API <b>directly exposes latitude and longitude</b> values for each result,
+    making it suitable for:
+    <ul>
+      <li>Map rendering</li>
+      <li>Distance calculations</li>
+      <li>Geospatial analysis</li>
+      <li>Location-based research</li>
+    </ul>
+  </li>
+
+  <br />
+
+  <li>
+    <b>⚡ No Built-in Rate Limiting</b><br />
+    There is <b>no artificial request cap</b> enforced at the API layer.
+    This allows developers to observe real-world behavior under continuous or
+    repeated queries during experimentation.
+  </li>
+</ul>
+
+<hr />
+
+<h2>☠️ Cons & Serious Warnings (Read Carefully)</h2>
+
+<p>
+<b>This section exists to clearly discourage careless or irresponsible usage.</b>
+</p>
+
+<ul>
+  <li>
+    <b>🚨 No Usage Guarantees</b><br />
+    This API can stop working <b>at any moment</b> without warning.
+    There are no uptime guarantees, SLAs, or stability promises.
+  </li>
+
+  <br />
+
+  <li>
+    <b>🔥 Extremely Fragile Response Structure</b><br />
+    The underlying response format is <b>not documented</b> and can change anytime.
+    A single upstream change may:
+    <ul>
+      <li>Break parsing completely</li>
+      <li>Return incorrect data</li>
+      <li>Crash dependent applications</li>
+    </ul>
+  </li>
+
+  <br />
+
+  <li>
+    <b>⚠️ Not Suitable for Production Use</b><br />
+    This project is <b>NOT designed</b> for production systems.
+    Using it in live applications may lead to:
+    <ul>
+      <li>Unexpected downtime</li>
+      <li>Application failures</li>
+      <li>Data inconsistency</li>
+    </ul>
+  </li>
+
+  <br />
+
+  <li>
+    <b>🚫 No Rate Limits = High Risk</b><br />
+    While there is no enforced rate limiting, excessive usage may:
+    <ul>
+      <li>Trigger upstream blocks</li>
+      <li>Result in temporary or permanent access denial</li>
+      <li>Cause your deployment to be suspended</li>
+    </ul>
+  </li>
+
+  <br />
+
+  <li>
+    <b>🧨 Legal & Compliance Risk</b><br />
+    Depending on how and where this code is used, it may violate:
+    <ul>
+      <li>Third-party platform terms</li>
+      <li>Service usage policies</li>
+      <li>Local or regional regulations</li>
+    </ul>
+    <b>The author takes zero responsibility</b> for any such violations.
+  </li>
+
+  <br />
+
+  <li>
+    <b>💀 Use at Your Own Risk</b><br />
+    If you choose to use, deploy, or modify this code:
+    <ul>
+      <li>You accept all risks</li>
+      <li>You assume full responsibility</li>
+      <li>You acknowledge that things <b>will break</b></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
 <h2>⚙️ Deployment</h2>
 <p>This project is optimized for <b>Vercel serverless functions</b>.</p>
 <ul>
@@ -190,6 +314,15 @@ Use at your own risk.
 <p>
 Built for learning, reverse-engineering research, and curiosity.<br />
 No guarantees. No liability.
+</p>
+
+<hr />
+
+<h2>🚫 Final Note</h2>
+<p>
+This repository is intentionally <b>research-oriented</b> and <b>not user-friendly</b>.
+If you are looking for a stable, supported, and compliant solution,
+<b>this project is not for you</b>.
 </p>
 
 </body>
