@@ -109,7 +109,7 @@ places-search-api/
 ├── api/
 │   └── find.js
 ├── package.json
-├── README.html
+└── README.html
 </pre>
 
 <hr />
