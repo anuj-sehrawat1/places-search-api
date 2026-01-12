@@ -38,7 +38,7 @@
 <h2>🚀 Live API (Demo)</h2>
 <p>
   <b>Base URL:</b><br />
-  <code>https://your-vercel-project.vercel.app/api/search</code>
+  <code>https://search-places-delta.vercel.app/api/find</code>
 </p>
 <p><i>(Demo endpoint may be rate-limited or disabled at any time.)</i></p>
 
@@ -48,7 +48,7 @@
 
 <h3>Endpoint</h3>
 <pre>
-GET /api/search?q=&lt;search_text&gt;
+GET /api/find?q=&lt;search_text&gt;
 </pre>
 
 <h3>Query Parameters</h3>
@@ -71,7 +71,7 @@ GET /api/search?q=&lt;search_text&gt;
 
 <h2>📥 Sample Request</h2>
 <pre>
-GET https://your-vercel-project.vercel.app/api/search?q=chandigarh
+GET https://search-places-delta.vercel.app/api/find?q=chandigarh
 </pre>
 
 <hr />
@@ -107,12 +107,9 @@ GET https://your-vercel-project.vercel.app/api/search?q=chandigarh
 <pre>
 places-search-api/
 ├── api/
-│   └── search.js
-├── utils/
-│   └── parser.js
+│   └── find.js
 ├── package.json
 ├── README.html
-└── vercel.json
 </pre>
 
 <hr />
@@ -121,7 +118,7 @@ places-search-api/
 
 <h3>1️⃣ Clone the repository</h3>
 <pre>
-git clone https://github.com/your-username/places-search-api.git
+git clone https://github.com/anuj-sehrawat1/places-search-api.git
 cd places-search-api
 </pre>
 
@@ -137,7 +134,7 @@ npm run dev
 
 <p>
 API will be available at:<br />
-<code>http://localhost:3000/api/search?q=delhi</code>
+<code>http://localhost:3000/api/find?q=delhi</code>
 </p>
 
 <hr />
