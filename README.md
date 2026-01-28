@@ -20,22 +20,11 @@
 </ul>
 
 <hr />
-<hr />
 
 <h2>🚨 Important Note (Read Carefully)</h2>
 <p>
 This API is based on <b>scraping and reverse-engineering techniques</b>, which makes it
 <b>legally sensitive and potentially illegal</b> depending on how and where it is used.
-</p>
-<p>
-If you are genuinely interested in understanding the internals for <b>educational or research purposes</b>,
-<p>
-I may choose to share the details <b>personally and selectively</b>.
-<b>This is NOT a paid service</b> — no money involved.
-</p>
-
-<p>
-<b>Once again, to be absolutely clear:</b>
 </p>
 
 <ul>
