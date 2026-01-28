@@ -20,7 +20,48 @@
 </ul>
 
 <hr />
+<hr />
 
+<h2>🚨 Important Note (Read Carefully)</h2>
+<p>
+This API is based on <b>scraping and reverse-engineering techniques</b>, which makes it
+<b>legally sensitive and potentially illegal</b> depending on how and where it is used.
+</p>
+
+<p>
+For this reason, I <b>cannot share the internal source logic or scraping implementation publicly</b>
+in this repository or any open platform.
+</p>
+
+<p>
+If you are genuinely interested in understanding the internals for <b>educational or research purposes</b>,
+you may:
+</p>
+
+<ul>
+  <li>📩 Contact me directly, or</li>
+  <li>📬 Share your contact details so I can reach out</li>
+</ul>
+
+<p>
+I may choose to share the details <b>personally and selectively</b>.
+<b>This is NOT a paid service</b> — no money involved.
+</p>
+
+<p>
+<b>Once again, to be absolutely clear:</b>
+</p>
+
+<ul>
+  <li>🚫 This is a <b>scraping-based API</b></li>
+  <li>⚠️ It can be considered <b>illegal or against platform policies</b></li>
+  <li>❌ It is <b>NOT safe for production use</b></li>
+</ul>
+
+<p>
+Use this project <b>only for learning and experimentation</b>.
+Any misuse or legal consequences are solely the responsibility of the user.
+</p>
 <h2>✨ Features</h2>
 <ul>
   <li>🔎 Global place search (worldwide)</li>
