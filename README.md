@@ -27,22 +27,8 @@
 This API is based on <b>scraping and reverse-engineering techniques</b>, which makes it
 <b>legally sensitive and potentially illegal</b> depending on how and where it is used.
 </p>
-
-<p>
-For this reason, I <b>cannot share the internal source logic or scraping implementation publicly</b>
-in this repository or any open platform.
-</p>
-
 <p>
 If you are genuinely interested in understanding the internals for <b>educational or research purposes</b>,
-you may:
-</p>
-
-<ul>
-  <li>📩 Contact me directly, or</li>
-  <li>📬 Share your contact details so I can reach out</li>
-</ul>
-
 <p>
 I may choose to share the details <b>personally and selectively</b>.
 <b>This is NOT a paid service</b> — no money involved.
